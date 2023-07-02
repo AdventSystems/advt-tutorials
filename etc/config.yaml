@@ -1,0 +1,10 @@
+databases:
+  postgres:
+    driver: postgres
+    host: 127.0.0.1
+    database: advt
+    user: advt
+    password: advt
+    prefix: ""
+
+prefix: xxx

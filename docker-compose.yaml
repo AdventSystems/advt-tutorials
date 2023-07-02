@@ -1,0 +1,46 @@
+version: '3.2'
+services:
+  db:
+    container_name: db_advt
+    image: postgres
+    restart: always
+    hostname: postgres
+    volumes:
+      - ./ivar/data/:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: advt
+      POSTGRES_USER: advt
+      POSTGRES_PASSWORD: advt
+    command:
+      [
+        "-c",
+        "shared_buffers=256MB",
+        "-c",
+        "max_connections=2000"
+      ]
+    ports:
+      - "5432:5432"
+    networks:
+      - db-network
+      - auth-network
+
+  redis:
+    image: "redis:alpine"
+    ports:
+      - '6379:6379'
+    networks:
+      - db-network
+      
+  # mailhog:
+  #     image: mailhog/mailhog
+  #     container_name: 'mailhog'
+  #     ports:
+  #       - "1025:1025"
+  #       - "8025:8025"
+
+
+networks:
+  auth-network:
+    driver: bridge
+  db-network:
+    driver: bridge
