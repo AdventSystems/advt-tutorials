@@ -8,3 +8,6 @@ databases:
     prefix: ""
 
 prefix: xxx
+
+SECRET_KEY: "6y7U7Eplv9uR9wcjL8R0e03RI21eCeFf"
+ACCESS_TOKEN_EXPIRE_MINUTES: 10
